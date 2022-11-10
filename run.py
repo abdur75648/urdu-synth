@@ -27,12 +27,8 @@ def margins(margin):
 
 
 def parse_arguments():
-    """
-        Parse the command line arguments of the program.
-    """
-
     parser = argparse.ArgumentParser(
-        description="Generate synthetic text data for text recognition."
+        description="Generate synthetic text data for urdu text recognition."
     )
     parser.add_argument(
         "--output_dir", type=str, nargs="?", help="The output directory", default="out/"
@@ -50,7 +46,7 @@ def parse_arguments():
         "--language",
         type=str,
         nargs="?",
-        help="The language to use, should be fr (French), en (English), es (Spanish), de (German), ar (Arabic), cn (Chinese), or hi (Hindi)",
+        help="The language to use for the text",
         default="ur",
     )
     parser.add_argument(
@@ -113,7 +109,7 @@ def parse_arguments():
         default=False,
     )
     parser.add_argument(
-        "-h",
+        "-ht",
         "--height",
         type=int,
         nargs="?",
@@ -199,8 +195,8 @@ def parse_arguments():
         "-na",
         "--name_format",
         type=int,
-        help="Define how the produced files will be named. 0: [TEXT]_[ID].[EXT], 1: [ID]_[TEXT].[EXT] 2: [ID].[EXT] + one file labels.txt containing id-to-label mappings",
-        default=0,
+        help="Define how the produced files will be named",
+        default=2,
     )
     parser.add_argument(
         "-om",
@@ -237,7 +233,7 @@ def parse_arguments():
         "-rr",
         "--random_resize",
         action="store_true",
-        help="When set, the image width & height will be randomly resized in -25\% to 25% range",
+        help="When set, the image width & height will be randomly resized betn half to double",
         default=False,
     )
     parser.add_argument(
@@ -335,13 +331,6 @@ def parse_arguments():
         default=os.path.join(os.path.split(os.path.realpath(__file__))[0], "images"),
     )
     parser.add_argument(
-        "-ca",
-        "--case",
-        type=str,
-        nargs="?",
-        help="Generate upper or lowercase only. arguments: upper or lower. Example: --case upper",
-    )
-    parser.add_argument(
         "-dt", "--dict", type=str, nargs="?", help="Define the dictionary to be used"
     )
     parser.add_argument(
@@ -372,7 +361,7 @@ def parse_arguments():
         "--image_mode",
         type=str,
         nargs="?",
-        help="Define the image mode to be used. RGB is default, L means 8-bit grayscale images, 1 means 1-bit binary images stored with one pixel per byte, etc.",
+        help="Define the image mode to be used",
         default="RGB",
     )
     return parser.parse_args()
@@ -447,19 +436,6 @@ def main():
         strings = create_strings_from_dict(
             args.length, args.random, args.count, lang_dict
         )
-
-    if args.language == "ar":
-        from arabic_reshaper import ArabicReshaper
-
-        arabic_reshaper = ArabicReshaper()
-        strings = [
-            " ".join([arabic_reshaper.reshape(w) for w in s.split(" ")[::-1]])
-            for s in strings
-        ]
-    if args.case == "upper":
-        strings = [x.upper() for x in strings]
-    if args.case == "lower":
-        strings = [x.lower() for x in strings]
         
     if args.max_length>0:
         for i,x in enumerate(strings):
