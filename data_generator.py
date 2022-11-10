@@ -175,8 +175,8 @@ class FakeTextDataGenerator(object):
         #############################
         
         if alignment == 3 and not fit:
-            # randomly increase background_width within 0% to 400% of original width
-            background_width = int(background_width * rnd.uniform(1.0, 4.0))
+            # randomly increase background_width within 0% to 300% of original width # For digits
+            background_width = int(background_width * rnd.uniform(1.0, 3.0))
         
         if background_type==4:
             background_type = rnd.choice([0,0,1,3,3,3,3,3,3,3])
