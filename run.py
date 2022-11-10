@@ -492,7 +492,7 @@ def main():
         pass
     p.terminate()
     
-    strings = [x.replace("ﷺ","صلی اللہ علیہ وسلم") for x in strings]
+    # strings = [x.replace("ﷺ","صلی اللہ علیہ وسلم") for x in strings]
 
     if args.name_format == 2:
         # Create file with filename-to-label connections
