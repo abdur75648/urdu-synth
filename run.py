@@ -170,6 +170,13 @@ def parse_arguments():
         default=False,
     )
     parser.add_argument(
+        "-rx",
+        "--random_shearx",
+        action="store_true",
+        help="When set, random shearx",
+        default=False,
+    )
+    parser.add_argument(
         "-sp",
         "--salt_and_pepper",
         type=float,
@@ -461,6 +468,7 @@ def main():
                 [args.random_skew] * string_count,
                 [args.blur] * string_count,
                 [args.random_blur] * string_count,
+                [args.random_shearx] * string_count,
                 [args.salt_and_pepper] * string_count,
                 [args.background] * string_count,
                 [args.distorsion] * string_count,

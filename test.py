@@ -1,12 +1,10 @@
-import random
-with open("en.txt","r") as f:
-    lines = f.readlines()
+from PIL import Image
+img = Image.open("test.jpg")
+img_transformed = img.transform(img.size, Image.Transform.AFFINE, (1, -0.9, 0, 0, 1, 0))
+img_transformed.save("test_0.9.jpg")
+img_transformed = img.transform(img.size, Image.Transform.AFFINE, (1, -0.5, 0, 0, 1, 0))
+img_transformed.save("test_0.5.jpg")
+img_transformed = img.transform(img.size, Image.Transform.AFFINE, (1, 0.0, 0, 0, 1, 0))
+img_transformed.save("test_0.0.jpg")
 
-# Select 2000 random lines
-lines = random.sample(lines, 2000)
-
-# write the lines to a new file
-with open("en_random.txt","w") as f:
-    for line in lines:
-        if len(line)>1:
-            f.write(line)
+## 0.5 is best

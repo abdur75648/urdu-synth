@@ -2,3 +2,6 @@ __pycache__/*
 **/__pycache__/*
 .env
 *.ipynb
+experiments/*
+test.py
+vis.py
