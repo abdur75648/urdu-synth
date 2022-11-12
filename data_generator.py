@@ -41,6 +41,7 @@ class FakeTextDataGenerator(object):
         random_skew,
         blur,
         random_blur,
+        random_shearx,
         salt_and_pepper,
         background_type,
         distorsion_type,
@@ -264,6 +265,9 @@ class FakeTextDataGenerator(object):
         if rnd.random() < salt_and_pepper:
             final_image = salt_and_pepper_noise(final_image)
         
+        if random_shearx:
+            shearx_factor = rnd.uniform(-0.25,0.5)
+            final_image = final_image.transform(final_image.size, Image.Transform.AFFINE, (1, shearx_factor, 0, 0, 1, 0))
         """
         if random_transforms:
             final_image = PILToTensor()(final_image)
