@@ -6,3 +6,5 @@ experiments/*
 test.py
 vis.py
 out/*
+fonts/ur/
+dicts/ur.txt/
