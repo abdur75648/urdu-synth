@@ -5,3 +5,5 @@ __pycache__/*
 experiments/*
 test.py
 vis.py
+fonts/ur/
+dicts/ur.txt/
