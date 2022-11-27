@@ -176,8 +176,8 @@ class FakeTextDataGenerator(object):
         #############################
         
         if alignment == 3 and not fit:
-            # randomly increase background_width within 0% to 300% of original width # For digits
-            background_width = int(background_width * rnd.uniform(1.0, 3.0))
+            # randomly increase background_width within 0% to 200% of original width # For digits
+            background_width = int(background_width * rnd.uniform(1.0, 2.0))
         
         if background_type==4:
             background_type = rnd.choice([0,0,1,3,3,3,3,3,3,3])
@@ -247,7 +247,7 @@ class FakeTextDataGenerator(object):
         ############################################
         
         if random_crop:
-            # randomly crop image within 0% to 7.5% of original height & 0 to 2.5% of original width
+            # randomly crop image within 0% to 2.5% of original height & 0 to 2.5% of original width
             crop_left = int(background_width * rnd.uniform(0.0, 0.025))
             crop_top = int(background_height * rnd.uniform(0.0, 0.075))            
             crop_right = int(background_width * rnd.uniform(0.975, 1.0))

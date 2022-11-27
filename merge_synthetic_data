@@ -1,0 +1,29 @@
+import os,shutil
+from tqdm import tqdm
+
+folder_1 = "1M_test"
+folder_2 = "1L_singles"
+
+print("Moving from ", folder_2, " to ", folder_1)
+
+with open(folder_2+"/labels.txt","r") as f:
+    lines_2 = f.readlines()
+
+with open(folder_1+"/labels.txt","r") as f:
+    lines_1 = f.readlines()
+
+N1 = len(lines_1)
+N2 = len(lines_2)
+
+for line in tqdm(lines_2):
+    arr = line.strip("\n").split(".jpg ")
+    img = arr[0]
+    src_img = folder_2+"/"+img+".jpg"
+    label = arr[1]
+    img = str(int(img)+N1)
+    line = img + ".jpg " + label
+    # Append line to folder_1+"/labels.txt"
+    with open(folder_1+"/labels.txt","a") as f:
+        f.write(line+"\n")
+    dest_img = folder_1+"/"+img+".jpg"
+    shutil.move(src_img,dest_img)
