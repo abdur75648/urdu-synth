@@ -1,3 +1,4 @@
+# Put in the same folder as the images and labels.txt
 import os,shutil,random
 from PIL import Image
 from tqdm import tqdm
@@ -11,11 +12,11 @@ def get_concat_h(im1, im2):
     dst.paste(im1, (im2.width, 0))
     return dst
 
-# images = os.listdir("images")
+# images = os.listdir(".")
 with open("labels.txt","r") as f:
     lines = f.readlines()
 
-for i in tqdm(range(10000)):
+for i in tqdm(range(100)):
     indices_selected = []
     for j in range (random.randint(2,5)):
         index = random.randint(0,len(lines)-1)
@@ -27,7 +28,7 @@ for i in tqdm(range(10000)):
     the_line = lines[indices_selected[0]]
     img = the_line.split(" ")[0]
     gt = (" ".join(the_line.split(" ")[1:])).strip("\n")
-    image = Image.open("images/"+img)
+    image = Image.open(img)
     
     for index in indices_selected[1:]:
         the_line = lines[index]
@@ -50,7 +51,7 @@ for i in tqdm(range(10000)):
                 pil_img = Image.open(bracket_img)
                 image = get_concat_h(pil_img, image)
                 gt += " " + "("
-        image = get_concat_h(image, Image.open("images/"+img))
+        image = get_concat_h(image, Image.open(img))
         gt += " "+ this_gt
     image.save("out/"+str(i)+".jpg")
     # write gt to file
