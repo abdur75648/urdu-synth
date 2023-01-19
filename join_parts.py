@@ -40,7 +40,7 @@ for i in tqdm(range(10000)):
             flip = random.randint(0,1)
         if factor:
             bracket_number = random.randint(0,9)
-            bracket_img = "brackets/" + str(bracket_number)+"_bracket_resized.png"
+            bracket_img = "ra_brackets/" + str(bracket_number)+"_bracket_resized.png"
             if flip:
                 pil_img = Image.open(bracket_img).transpose(Image.FLIP_LEFT_RIGHT)
                 # Resize the pil_image to have height 128
