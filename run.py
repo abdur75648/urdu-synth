@@ -225,8 +225,8 @@ def parse_arguments():
         "--distorsion_orientation",
         type=int,
         nargs="?",
-        help="Define the distorsion's orientation. Only used if -d is specified. 0: Vertical (Up and down), 1: Horizontal (Left and Right), 2: Both",
-        default=0,
+        help="Define the distorsion's orientation. Only used if -d is specified. 0: Vertical (Up and down), 1: Horizontal (Left and Right), 2: Both, 3: Random",
+        default=3,
     )
     parser.add_argument(
         "-wd",

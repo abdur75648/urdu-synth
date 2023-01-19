@@ -113,6 +113,10 @@ class FakeTextDataGenerator(object):
         #############################
         # Apply distorsion to image #
         #############################
+        if distorsion_type==4:
+            distorsion_type = rnd.randint(0, 3)
+        if distorsion_orientation==3:
+            distorsion_orientation = rnd.randint(0, 2)
         if distorsion_type == 0:
             distorted_img = rotated_img  # Mind = blown
             distorted_mask = rotated_mask
