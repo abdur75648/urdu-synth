@@ -1,8 +1,11 @@
 arabic-reshaper==3.0.0
 beautifulsoup4==4.12.0
 bs4==0.0.1
+certifi @ file:///croot/certifi_1671487769961/work/certifi
 charset-normalizer==3.1.0
+fire==0.5.0
 idna==3.4
+lmdb==1.4.0
 numpy==1.21.6
 opencv-python==4.7.0.72
 Pillow==9.4.0
@@ -10,5 +13,6 @@ python-bidi==0.4.2
 requests==2.28.2
 six==1.16.0
 soupsieve==2.4
+termcolor==2.2.0
 tqdm==4.65.0
 urllib3==1.26.15
