@@ -5,8 +5,8 @@ from PIL import Image, ImageFilter
 
 import warnings
 warnings.filterwarnings("ignore")
-import torchvision.transforms.functional as F
-from torchvision.transforms import PILToTensor, ToPILImage
+# import torchvision.transforms.functional as F
+# from torchvision.transforms import PILToTensor, ToPILImage
 
 import computer_text_generator, background_generator, distorsion_generator
 
